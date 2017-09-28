@@ -1,4 +1,4 @@
-package com.kasry;
+package com.kasry.business;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Book {
         this.description = description;
     }
 
-    String getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 

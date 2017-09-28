@@ -1,5 +1,7 @@
-package com.kasry;
+package com.kasry.redis;
 
+import com.kasry.redis.Publisher;
+import com.kasry.redis.Subscriber;
 import redis.clients.jedis.Jedis;
 
 /**

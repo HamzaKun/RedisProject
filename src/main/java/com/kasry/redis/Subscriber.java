@@ -1,12 +1,14 @@
-package com.kasry;
+package com.kasry.redis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
 
 /**
+ * The subscriber, subscribers to given channels, and outputs the new messages
  * Created by hamzadev on 26/09/17.
  */
+
 public class Subscriber {
 
     private static final String SERVER_ADDR = "localhost";
