@@ -9,13 +9,13 @@ import java.util.Map;
 public class Book {
     private String isbn;
     private String title;
-    private String author;
+    private String authors;
     private String description;
 
-    public Book(String isbn, String title, String author, String description) {
+    public Book(String isbn, String title, String authors, String description) {
         this.isbn = isbn;
         this.title = title;
-        this.author = author;
+        this.authors = authors;
         this.description = description;
     }
 
@@ -35,12 +35,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthors(String authors) {
+        this.authors = authors;
     }
 
     public String getDescription() {
@@ -55,7 +55,7 @@ public class Book {
         Map<String, String> bookMap = new HashMap<String, String>();
         bookMap.put("isbn", this.isbn);
         bookMap.put("title", this.title);
-        bookMap.put("author", this.author);
+        bookMap.put("authors", this.authors);
         bookMap.put("description", this.description);
         return bookMap;
     }

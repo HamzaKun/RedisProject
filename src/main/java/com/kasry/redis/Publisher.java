@@ -55,13 +55,27 @@ public class Publisher extends JedisPubSub{
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("The book to be send :");
-        String message = scanner.nextLine();
-        Publisher publisher = new Publisher();
-        Book book = new Book("ISBN1", "Artificial Intelligence",
-                "Andrew Ng", "An introduction to artificial intelligence");
-        publisher.publishBook(book);
-        publisher.publish("books", message);
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Put in the book's ISBN :");
+            String isbn = scanner.nextLine();
+            System.out.println("Put in the book's title :");
+            String title = scanner.nextLine();
+            System.out.println("Put in the book's authors :");
+            String authors = scanner.nextLine();
+            System.out.println("Put in the book's description :");
+            String desc = scanner.nextLine();
+            Publisher publisher = new Publisher();
+            Book book1 = new Book(isbn, title, authors, desc);
+            publisher.publishBook(book1);
+            System.out.println("The book "+isbn+" has been published");
+            Book book = new Book("ISBN1", "Artificial Intelligence",
+                    "Andrew Ng", "An introduction to artificial intelligence");
+            publisher.publishBook(book);
+            System.out.println("To quit, type \"y \" or any other character to quit:");
+            String quit = scanner.nextLine();
+            if ( quit.equals("y"))
+                System.exit(0 );
+        }
     }
 }

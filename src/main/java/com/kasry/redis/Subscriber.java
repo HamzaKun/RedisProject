@@ -3,6 +3,9 @@ package com.kasry.redis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
+import java.util.Map;
+import java.util.Scanner;
+
 
 /**
  * The subscriber, subscribers to given channels, and outputs the new messages
@@ -33,6 +36,10 @@ public class Subscriber {
             public void onMessage(String channel, String message) {
                 super.onMessage(channel, message);
                 System.out.println("The message:" + message + " has been received");
+                String[] parts = message.split(" ");
+                Jedis jedis1 = new Jedis("localhost");
+                Map<String, String> properties = jedis1.hgetAll( parts[3]);
+                System.out.println(properties);
             }
 
             @Override
@@ -62,8 +69,9 @@ public class Subscriber {
                 super.subscribe(channels);
             }
         };
-
-                    System.out.println("Constructing the subscriber");
-                    jedis.subscribe(jedisPubSub, "books");
+        System.out.println("Constructing the subscriber, which channel do you want to subscribe to? ");
+        Scanner scanner = new Scanner(System.in);
+        String channel = scanner.nextLine();
+        jedis.subscribe(jedisPubSub, channel);
     }
 }
