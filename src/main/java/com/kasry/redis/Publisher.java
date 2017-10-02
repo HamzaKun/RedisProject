@@ -39,7 +39,6 @@ public class Publisher extends JedisPubSub{
         jedis.hmset(book.getIsbn(), book.toMap());
 
         //Splitting the description using the regEx, through characters not words
-//        List<String> channels = Arrays.asList(book.getDescription().split("[^\\p{L}\\d]+"));
         //Removing the stop words
         List<String> channels = new LinkedList<String>(Arrays.asList((book.getDescription().split("[^\\p{L}\\d]+"))));
         //This step will not remove nouns with upper case

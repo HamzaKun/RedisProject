@@ -20,6 +20,13 @@ public class Subscriber {
         jedis = new Jedis(SERVER_ADDR);
 
     }
+
+    public static void main(String[] args) {
+        Subscriber subscriber = new Subscriber();
+        System.out.println("The subscriber object has been created");
+        subscriber.subscribe();
+    }
+
     public void subscribe() {
         this.jedisPubSub = new JedisPubSub() {
             @Override
@@ -55,24 +62,8 @@ public class Subscriber {
                 super.subscribe(channels);
             }
         };
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+
                     System.out.println("Constructing the subscriber");
                     jedis.subscribe(jedisPubSub, "books");
-                    wait(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                jedis.quit();
-            }
-        }).start();
-    }
-
-    public static void main(String[] args) {
-        Subscriber subscriber = new Subscriber();
-        System.out.println("The subscriber object has been created");
-        subscriber.subscribe();
     }
 }
